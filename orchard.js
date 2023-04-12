@@ -27,15 +27,13 @@
     in cents. 
 */
 
-const fujiAcres = [2, 3, 3, 2, 2, 2, 1]
-const galaAcres = [5, 2, 4, 3, 6, 2, 4]
-const pinkAcres = [1, 5, 4, 2, 1, 5, 4]
+const fujiAcres = [2, 3, 3, 2, 2, 2, 1];
+const galaAcres = [5, 2, 4, 3, 6, 2, 4];
+const pinkAcres = [1, 5, 4, 2, 1, 5, 4];
 
-const fujiPrice = .89 
-const galaPrice = .64
-const pinkPrice = .55
-
-
+const fujiPrice = 0.89;
+const galaPrice = 0.64;
+const pinkPrice = 0.55;
 
 // PROBLEM 1
 
@@ -51,9 +49,11 @@ const pinkPrice = .55
 
 // CODE HERE
 
-
-
-
+let totalAcres = 0;
+for (let i = 0; i < fujiAcres.length; i++) {
+  totalAcres += fujiAcres[i] + galaAcres[i] + pinkAcres[i];
+}
+console.log(totalAcres);
 
 // PROBLEM 2
 
@@ -69,9 +69,12 @@ const pinkPrice = .55
 
 // CODE HERE
 
+for (let i = 0; i < fujiAcres.length; i++) {
+  totalAcres += fujiAcres[i] + galaAcres[i] + pinkAcres[i];
+}
+let averageDailyAcres = totalAcres / fujiAcres.length;
 
-
-
+console.log(averageDailyAcres);
 
 // PROBLEM 3
 
@@ -102,12 +105,16 @@ const pinkPrice = .55
 
 */
 
-let acresLeft = 174 
-let days = 0
+let acresLeft = 174;
+let days = 0;
 
 // CODE HERE
 
-
+while (acresLeft > 0) {
+  days++;
+  acresLeft -= averageDailyAcres;
+}
+console.log(days);
 
 // PROBLEM 4
 
@@ -135,14 +142,21 @@ let days = 0
 
 // CODE HERE
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+let fujiTons = [];
+let galaTons = [];
+let pinkTons = [];
 
+const tonsPerAcre = 6.5;
 
+for (let i = 0; i < fujiAcres.length; i++) {
+  fujiTons.push(fujiAcres[i] * tonsPerAcre);
+  galaTons.push(galaAcres[i] * tonsPerAcre);
+  pinkTons.push(pinkAcres[i] * tonsPerAcre);
+}
 
-
-
+console.log(fujiTons);
+console.log(galaTons);
+console.log(pinkTons);
 
 // PROBLEM 5
 
@@ -160,16 +174,14 @@ let days = 0
     Hint: there are 2000 pounds in a ton.
 */
 
-// CODE HERE 
+// CODE HERE
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
-
-
-
-
-
+let totalFujiPounds = fujiAcres.reduce((a, b) => a + b) * poundsPerTon;
+console.log(`Total Fuji Pounds: ${totalFujiPounds}`);
+let totalGalaPounds = galaAcres.reduce((a, b) => a + b) * poundsPerTon;
+console.log(`Total Gala Pounds: ${totalGalaPounds}`);
+let totalPinkPounds = pinkAcres.reduce((a, b) => a + b) * poundsPerTon;
+console.log(`Total Pink Pounds: ${totalPinkPounds}`);
 
 // PROBLEM 6
 
@@ -189,14 +201,12 @@ let days = 0
 
 // CODE HERE
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
-
-
-
-
-
+let fujiProfit = totalFujiPounds * fujiPrice;
+console.log(`Fuji Profit: $${fujiProfit.toFixed(2)}`);
+let galaProfit = totalGalaPounds * galaPrice;
+console.log(`Gala Profit: $${galaProfit.toFixed(2)}`);
+let pinkProfit = totalPinkPounds * pinkPrice;
+console.log(`Pink Profit: $${pinkProfit.toFixed(2)}`);
 
 // PROBLEM 7
 
@@ -209,3 +219,5 @@ let days = 0
 */
 
 // CODE HERE
+
+console.log(`Total Profit: $${totalProfit.toFixed(2)}`);
