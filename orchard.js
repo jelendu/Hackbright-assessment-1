@@ -176,6 +176,8 @@ console.log(pinkTons);
 
 // CODE HERE
 
+const poundsPerTon = 2000;
+
 let totalFujiPounds = fujiAcres.reduce((a, b) => a + b) * poundsPerTon;
 console.log(`Total Fuji Pounds: ${totalFujiPounds}`);
 let totalGalaPounds = galaAcres.reduce((a, b) => a + b) * poundsPerTon;
@@ -219,5 +221,5 @@ console.log(`Pink Profit: $${pinkProfit.toFixed(2)}`);
 */
 
 // CODE HERE
-
+let totalProfit = fujiProfit + galaProfit + pinkProfit;
 console.log(`Total Profit: $${totalProfit.toFixed(2)}`);
